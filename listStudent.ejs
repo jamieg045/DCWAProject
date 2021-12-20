@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <h1>Students</h1>
+        <br>
+        <button><a href="/addStudent">Add Student</a></button>
+        <br></br>
+
+        <table rules="all">
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>GPA</th>
+            <th>Action</th>
+        </tr>
+        <% lists.forEach((list) => { %>
+        <tr>
+            <td><% list.sid %></td>
+            <td><% list.name %></td>
+            <td><% list.gpa %></td>
+            <td>Delete</td>
+        </tr>
+        <% }) %>
+    </table>
+        <a href="/">Home</a>
+    </body>
+</html>

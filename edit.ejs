@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <h1>Edit Module</h1>
+        <ul>
+            <li>The Module ID is not editable</li>
+            <li>The Module Name should be a minimum of 5 characters</li>
+            <li>The Credits should be 5, 10, or 15</li>
+        </ul>
+        <form action="/edit" method="POST">
+            <label>Module ID: </label><br>
+            <input type="text" name="mid" value="<%= module.mid %>"><br>
+            <label>Name: </label><br>
+            <input type="text" name="name" value="<%= module.name %>"><br>
+            <label>Credits: </label><br>
+            <input type="number" name="credits" value="<%= module.credits %>"><br>
+            <input type="submit" value="Add">
+        </form>
+        <a href="/">Home</a>
+    </body>
+</html>
