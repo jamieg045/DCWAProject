@@ -51,20 +51,20 @@ app.get('/edit/:module', (req, res) => {
              })
         })
 
-    // app.post('/edit/:modules',
-    // [check('name').isLength({min:5}).withMessage("Module Name must be at least 5 characters")],
-    // check('credits').isFloat({min:5, max:15}).withMessage("Credits can be either 5, 10 or 15"),
-    // (req, res) => {
-    //     var errors = validationResult(req)
-    //     if(!errors.isEmpty()) {
-    //         res.render(__dirname + '/edit', {errors:errors.errors, mid:req.body.mid, name:req.body.name, credits:req.body.credits})
-    //     }
-    //     else{
-    //         console.log(req.body);
-    //         mySQL.changeModule.push({mid:req.body.mid, name:req.body.name, credits:req.bodt.credits})
-    //         res.redirect('/listmodules');
-    //     }
-    // })
+     app.post('/edit/:modules',
+     [check('name').isLength({min:5}).withMessage("Module Name must be at least 5 characters")],
+     check('credits').isFloat({min:5, max:15}).withMessage("Credits can be either 5, 10 or 15"),
+     (req, res) => {
+         var errors = validationResult(req)
+         if(!errors.isEmpty()) {
+             res.render(__dirname + '/edit', {errors:errors.errors, mid:req.body.mid, name:req.body.name, credits:req.body.credits})
+         }
+         else{
+             console.log(req.body);
+             //mySQL.changeModule.push({mid:req.body.mid, name:req.body.name, credits:req.body.credits})
+             res.redirect('/listmodules');
+         }
+     })
 })
 
 app.get('/students/:student', (req, res) => {
