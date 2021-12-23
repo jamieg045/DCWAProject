@@ -1,15 +1,13 @@
 <html>
     <body>
-        <h1>Students studying </h1>
-        <br>
 
+        <h1>Students studying </h1>
         <table rules="all">
         <tr>
             <th>Student ID</th>
             <th>Name</th>
             <th>GPA</th>
         </tr>
-        <form action='/showStudent' method="POST" >
         <% students.forEach((student) => { %>
         <tr>
             <td><%= student.sid %></td>
@@ -17,7 +15,6 @@
             <td><%= student.gpa %></td>
         </tr>
         <% }) %>
-    </form>
     </table>
     <br>
     <a href="/">Home</a>

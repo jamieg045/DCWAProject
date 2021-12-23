@@ -14,10 +14,10 @@
         </tr>
         <% lists.forEach((list) => { %>
         <tr>
-            <td><% list.sid %></td>
-            <td><% list.name %></td>
-            <td><% list.gpa %></td>
-            <td>Delete</td>
+            <td><%= list.sid %></td>
+            <td><%= list.name %></td>
+            <td><%= list.gpa %></td>
+            <td><a href="/delete/<%= list.sid %>">Delete</a></td>
         </tr>
         <% }) %>
     </table>

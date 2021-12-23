@@ -45,7 +45,7 @@ var getModule = function (mid) {
 var changeModule = function (mid, name, credits) {
     return new Promise((resolve, reject) => {
         var newQuery = {
-            sql: 'update module set name = ?, credits = ? where mid = "?"',
+            sql: 'update module set name = "?", credits = "?" where mid = "?"',
             values: [name, credits, mid]
         }
         pool.query(newQuery)
@@ -60,7 +60,7 @@ var changeModule = function (mid, name, credits) {
 var getStudent = function (mid) {
     return new Promise((resolve, reject) => {
         var Query = {
-            sql: 'select s.sid, s.name, s.gpa from student s inner join student_module m on s.sid = m.sid where m.mid = "?"',
+            sql: 'select s.sid, s.name, s.gpa from student s left join student_module m on s.sid = m.sid where m.mid = ?',
             values: [mid]
         }
         pool.query(Query)
@@ -101,4 +101,22 @@ var addStudent = function (sid, name, gpa) {
     })
 }
 
-module.exports = { getModules, getModule, changeModule, getStudent, getListStudents, addStudent };
+var DeleteStudent = function(student_id)
+{
+    return new Promise((resolve, reject) => {
+        var myQuery = {
+            sql: 'delete from student where sid = ?',
+            values: [student_id]
+        }
+        pool.query(myQuery)
+        .then((result) =>
+        {
+            resolve(result)
+        })
+        .catch((error) => {
+            reject(error);
+        })
+    })
+}
+
+module.exports = { getModules, getModule, changeModule, getStudent, getListStudents, addStudent, DeleteStudent };
